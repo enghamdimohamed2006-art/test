@@ -1,0 +1,594 @@
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+@media (max-width: 1400px) {
+    :root {
+        --padding-x1: 5%;
+        --padding-x2: 2%;
+    }
+
+    /* إلغاء الارتفاع الثابت للأقسام لمنع تداخل النصوص والبطاقات */
+    section {
+        height: auto;
+        padding: 80px var(--padding-x1);
+    }
+
+    /* الناف بار */
+    nav .main-nav {
+        gap: 20px;
+        grid-template-columns: 200px 1fr auto;
+    }
+    nav .main-nav .links > ul {
+        gap: 10px;
+    }
+    nav .main-nav .links > ul > li {
+        padding: 25px 8px;
+    }
+    nav .main-nav .links > ul > li > a {
+        font-size: 16px;
+    }
+    .dropdown {
+        left: 200%;
+    }
+
+    /* الهيدر */
+    header {
+        height: auto;
+        min-height: 85vh;
+        padding: 80px var(--padding-x1) 0;
+        gap: 30px;
+    }
+    header .img-header {
+        width: 90%;
+    }
+
+    /* قسم من نحن (About) */
+    .about {
+        height: auto;
+        grid-template-columns: 1fr 1.2fr 1.5fr;
+        gap: 30px;
+    }
+
+    /* قسم الخدمات (Services) */
+    .services {
+        gap: 60px;
+    }
+    .services .container {
+        gap: 30px;
+    }
+    .services .container .card {
+        height: auto;
+        padding: 60px 20px 30px;
+    }
+    .services .container .card #on {
+        width: 75px;
+        height: 75px;
+        top: -35px;
+    }
+    .services .container .card #on i {
+        font-size: 40px;
+    }
+
+    /* قسم الأسعار (Pricing) */
+    .pricing .container {
+        gap: 25px;
+    }
+    .pricing .container .card {
+        height: auto;
+    }
+
+    /* قسم آراء العملاء (Testimonials) */
+    .testimonials .data-testimonials .sec-heading.two h2 {
+        font-size: 45px;
+    }
+
+    /* قسم طلب خدمة (Request) */
+    .request {
+        padding-left: 25%;
+    }
+    .request .img-request {
+        width: 25%;
+    }
+    .request .form-request {
+        width: 35%;
+        height: auto;
+        padding: 40px 20px;
+        top: 5%;
+    }
+
+    /* قسم خطوات العمل (Work) */
+    .work .container .design {
+        width: 32%;
+        left: 28%;
+    }
+
+    /* المدونة (Blog) */
+    .blog .container .card {
+        width: 100%;
+    }
+
+    /* الفوتر (Footer) */
+    footer {
+        padding: 80px var(--padding-x1) 30px;
+        gap: 60px;
+    }
+}
+@media (min-width: 1201px) {
+    .menu-icon,
+    #handlenav {
+        display: none;
+    }
+}
+@media (max-width: 1200px) {
+    :root {
+        --padding-x1: 4%;
+        --padding-x2: 3%;
+    }
+
+    /* إظهار أيقونة البرجر في الناف بار */
+    .menu-icon {
+        display: block;
+        position: absolute;
+        top: 22px;
+        right: 25px;
+        z-index: 101;
+        font-size: 26px;
+        cursor: pointer;
+        color: var(--black);
+    }
+
+    /* تبديل شكل الأيقونة بين الـ Bars و Close بناءً على الـ Checkbox */
+    #handlenav:not(:checked) ~ .menu-icon .fa-close {
+        display: none;
+    }
+    #handlenav:checked ~ .menu-icon .fa-bars {
+        display: none;
+    }
+    #handlenav:checked ~ .menu-icon .fa-close {
+        display: block;
+        color: var(--main);
+    }
+
+    /* هيكل الناف بار الرئيسي (مخفي ومقفل الارتفاع افتراضياً) */
+    nav .main-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        padding: 0 var(--padding-x2);
+        grid-template-columns: none;
+        gap: 0;
+    }
+
+    /* عند تفعيل الـ Checkbox (فتح القائمة) */
+    #handlenav:checked ~ .main-nav {
+        max-height: 750px;
+        padding: 20px var(--padding-x2);
+        overflow-y: auto;
+    }
+
+    nav .main-nav .links {
+        display: block;
+        width: 100%;
+    }
+
+    nav .main-nav .links > ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0;
+    }
+
+    nav .main-nav .links > ul > li {
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        position: static;
+    }
+
+    nav .main-nav .links > ul > li > a {
+        width: 100%;
+        justify-content: space-between;
+        font-size: 17px;
+    }
+
+    /* ضبط الـ Dropdown داخل القائمة المنسدلة للموبايل */
+    .dropdown,
+    .dropdown.two {
+        position: static !important;
+        transform: none !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: rgba(0, 0, 0, 0.03) !important;
+        padding: 10px 15px !important;
+        margin-top: 10px;
+        border-radius: 8px;
+        display: none;
+    }
+
+    /* إظهار الـ Dropdown عند التفاعل مع العنصر */
+    nav .main-nav .links > ul > li:hover .dropdown,
+    nav .main-nav .links > ul > li:hover .dropdown.two {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dropdown.two .data-dropdown2,
+    .dropdown.two .data-dropdown2 ul {
+        width: 100%;
+    }
+
+    .dropdown.two .data-dropdown2 ul li {
+        padding: 8px 0;
+        width: 100%;
+    }
+
+    .dropdown .card,
+    .dropdown .card .img-dropdown {
+        width: 100%;
+    }
+
+    nav .main-nav .data-main-nav {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* تعديلات عامة لبقية الأقسام عند شاشة 1200px فما أقل */
+    .time .data-time {
+        width: 70%;
+    }
+    .time .data-time ul li {
+        padding: 5px 10px;
+    }
+    .time .data-time ul li span,
+    .time .data-time ul li a {
+        font-size: 14px;
+    }
+    .time .social-time {
+        width: 30%;
+        gap: 15px;
+    }
+
+    header {
+        grid-template-columns: 1fr;
+        padding-bottom: 80px;
+    }
+    header .img-header {
+        display: none;
+    }
+    header .data-header {
+        width: 100%;
+    }
+
+    .about {
+        grid-template-columns: 1fr 1fr;
+    }
+    .about .data-about-us {
+        grid-column: span 2;
+    }
+
+    .services .container,
+    .pricing .container,
+    .blog .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 25px;
+    }
+
+    .team {
+        grid-template-columns: 1fr;
+        gap: 70px;
+    }
+    .team .img-team .card {
+        height: auto;
+        padding-top: 80px;
+    }
+
+    .testimonials {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .testimonials .data-testimonials {
+        border-right: none;
+        border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+        padding-bottom: 30px;
+    }
+
+    .request {
+        grid-template-columns: 1fr;
+        padding-left: var(--padding-x1);
+        gap: 40px;
+    }
+    .request .img-request {
+        display: none;
+    }
+    .request .data-request .call,
+    .request .data-request .email,
+    .request .data-request .Location {
+        width: 100%;
+        grid-template-columns: 60px 1fr;
+    }
+    .request .form-request {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .work .container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .work .container .design {
+        position: static;
+        transform: none;
+        width: 100%;
+    }
+    .work .container .img-planning img {
+        width: 100%;
+    }
+
+    .question {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .question .img-question .img1 {
+        min-height: 350px;
+    }
+
+    footer .billdins {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+    footer .ourservices {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+@media (max-width: 768px) {
+    .time {
+        flex-direction: column;
+    }
+    .time .data-time,
+    .time .social-time {
+        width: 100%;
+        justify-content: center;
+        padding: 8px var(--padding-x2);
+    }
+    .time .data-time ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .sec-heading h1 {
+        font-size: 36px;
+    }
+    .sec-heading.two h2,
+    .services .sec-heading.two h2,
+    .pricing .data-pricing .sec-heading.two h2,
+    .work .sec-heading.two h2,
+    .question .data .sec-heading.two h2,
+    .blog .sec-heading.two h2 {
+        font-size: 30px;
+    }
+    .testimonials .data-testimonials .sec-heading.two h2 {
+        font-size: 36px;
+    }
+
+    header .data-header {
+        padding: 0 20px 20px;
+        border-left-width: 6px;
+        border-bottom-width: 6px;
+        gap: 30px;
+    }
+    header .data-header .watch {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+    .about .data-about-us {
+        grid-column: span 1;
+    }
+    .about .data-about {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .about .data-about div {
+        width: 48%;
+    }
+    .about .data-about-us .coustom .data-coustom,
+    .about .data-about-us .coustom .img-coustom {
+        grid-template-columns: 1fr;
+    }
+    .about .data-about-us .coustom .img-coustom .data-img {
+        width: 120px;
+    }
+
+    .services .container,
+    .pricing .container,
+    .blog .container,
+    .team,
+    .testimonials,
+    .work .container,
+    footer .ourservices {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing .data-pricing {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    footer .billdins .email {
+        width: 100%;
+    }
+    footer .billdins .email input {
+        padding: 15px;
+        width: 65%;
+    }
+    footer .billdins .email .btn {
+        padding: 15px;
+        width: 35%;
+    }
+    footer .copy {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+@media (max-width: 576px) {
+    :root {
+        --padding-x1: 4%;
+        --padding-x2: 4%;
+    }
+
+    section {
+        padding: 60px var(--padding-x1);
+    }
+
+    nav .main-nav {
+        padding: 10px var(--padding-x2);
+    }
+    nav .main-nav .data-main-nav .btn {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    nav .main-nav .data-main-nav .btn i {
+        margin-left: 8px;
+        font-size: 12px;
+    }
+
+    .sec-heading h1 {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+    .sec-heading p {
+        font-size: 15px;
+    }
+    .sec-heading.two h2,
+    .services .sec-heading.two h2,
+    .pricing .data-pricing .sec-heading.two h2,
+    .work .sec-heading.two h2,
+    .question .data .sec-heading.two h2,
+    .blog .sec-heading.two h2 {
+        font-size: 24px;
+    }
+    .sec-heading.two span::after {
+        display: none;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    .about .data-about div {
+        width: 100%;
+    }
+
+    .testimonials .data-testimonials .active {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .testimonials .savannah .data-savannah p {
+        font-size: 16px;
+    }
+
+    .request .data-request .call,
+    .request .data-request .email,
+    .request .data-request .Location {
+        padding: 15px;
+        grid-template-columns: 45px 1fr;
+    }
+    .request .data-request .call i,
+    .request .data-request .email i,
+    .request .data-request .Location i {
+        font-size: 28px;
+    }
+    .request .form-request form {
+        padding: 0 5%;
+    }
+    .request .form-request form input,
+    .request .form-request form textarea {
+        padding: 12px 15px;
+        font-size: 15px;
+    }
+
+    .work .container .planning {
+        padding-left: 15%;
+        gap: 15px;
+    }
+    .work .container .planning .number span {
+        font-size: 28px;
+    }
+
+    .question .data .data-question .home {
+        gap: 15px;
+    }
+    .question .data .data-question .home p {
+        font-size: 16px;
+    }
+    .question .img-question .img1 img,
+    .question .img-question .img1 .img2,
+    .question .img-question .img1 .img3 {
+        width: 42%;
+    }
+
+    .blog .container .card .box span {
+        font-size: 18px;
+    }
+}
+@media (max-width: 400px) {
+    nav .main-nav .data-main-nav .btn {
+        display: none;
+    }
+
+    .sec-heading h1 {
+        font-size: 24px;
+    }
+
+    .pricing .data-pricing .monthly {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .pricing .data-pricing .monthly .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    footer .billdins .email {
+        flex-direction: column;
+        gap: 10px;
+    }
+    footer .billdins .email input,
+    footer .billdins .email .btn {
+        width: 100%;
+    }
+    footer .copy .data-copy2 {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+}
